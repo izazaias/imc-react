@@ -13,4 +13,46 @@
         padding: 1rem;
         min-width: auto;
     }
+
+    .form-inputs {
+        flex-direction: column;
+    }
+
+    .action-control {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .table-header,
+    .table-data {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .table-header h4,
+    .table-data p {
+        flex: unset;
+        max-width: none;
+    }
+
+    #imc-number {
+        font-size: 2rem;
+    }
+
+    #imc-info {
+        font-size: 1.2rem;
+    }
+
+    #imc-table {
+        font-size: 0.9rem;
+    }
+
+    .form-control input {
+        width: 100%;
+    }
 }
