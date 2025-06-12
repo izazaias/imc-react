@@ -1,9 +1,9 @@
-import Button from "./Button";
-import "./Button.css";
 import "./ImcCalc.css";
+import "./Button.css";
+import Button from "./Button";
 import { useState } from "react";
 
-const ImcCalc = () => {
+const ImcCalc = ({ calcImc }) => {
   const [altura, setAltura] = useState("");
   const [peso, setPeso] = useState("");
 
@@ -14,14 +14,18 @@ const ImcCalc = () => {
   };
 
   const validDigits = (text) => {
-    return text.replace(/[^0-9,]/g, "")
-  }
+    return text.replace(/[^0-9,]/g, "");
+  };
 
   const handleHeightChange = (e) => {
-    const updateValue = validDigits(e.target.value)
+    const updateValue = validDigits(e.target.value);
+    setAltura(updateValue);
+  };
 
-    setAltura(updateValue)}
-  }
+  const handleWeightChange = (e) => {
+    const updateValue = validDigits(e.target.value);
+    setPeso(updateValue);
+  };
 
   return (
     <div id="calc-container">
@@ -46,13 +50,13 @@ const ImcCalc = () => {
               name="weight"
               id="weight"
               placeholder="Exemplo 70,5"
-              onChange={(e) => setPeso(e.target.value)}
+              onChange={(e) => handleWeightChange(e)}
               value={peso}
             />
           </div>
         </div>
         <div className="action-control">
-          <Button id="calc-btn" text="Calcular" />
+          <Button id="calc-btn" text="Calcular" action={(e) => calcImc(e, altura, peso)} />
           <Button id="clear-btn" text="Limpar" action={clearForm} />
         </div>
       </form>
